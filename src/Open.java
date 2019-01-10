@@ -41,8 +41,8 @@ public class Open extends JFrame {
             chooseUser=false;
     private int UP_DOWN=0,Left_RIGHT=0;
     private JLabel mo=new JLabel("玩家        攻擊         移動方式");
-    private JLabel p1=new JLabel("p1            H           W    A        S       D");
-    private JLabel p2=new JLabel("p2            L           Up   Left     Right   Down");
+    private JLabel p1=new JLabel("p1            H           W       A        S       D");
+    private JLabel p2=new JLabel("p2            L           Up      Left     Right   Down");
 
     public Open() {
         init();
@@ -109,11 +109,11 @@ public class Open extends JFrame {
         jLabel_Count2.setBounds(415,430,150,50);
         jLabel_Count2.setFont(font);
 
-        mo.setBounds(300,100,500,50);
+        mo.setBounds(200,100,500,50);
         mo.setFont(font);
-        p1.setBounds(300,200,500,50);
+        p1.setBounds(200,200,500,50);
         p1.setFont(font);
-        p2.setBounds(300,300,500,50);
+        p2.setBounds(200,300,500,50);
         p2.setFont(font);
 
 //      --------------------------------------------------------------
