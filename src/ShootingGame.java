@@ -12,7 +12,7 @@ public class ShootingGame extends JFrame{
     private void init(int color1,int color2,int hp1,int hp2,int speed1,int speed2){
         Establish establish = new Establish();//建立(Establish)的類別變數
         this.setVisible(true);
-        this.setLocationRelativeTo(null);//使窗口居中
+        this.setLocation(500,50);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//關閉
         this.setSize(750,530);//視窗大小
         this.add(establish);//把(establish)添加到視窗裡
