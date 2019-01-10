@@ -29,7 +29,7 @@ public class Open extends JFrame {
             jLabel_Start =new JLabel("進入"),
             jLabel_Description =new JLabel("說明"),
             jLabel_Exit =new JLabel("離開");
-    private Font font = new Font("JackeyFont", Font.BOLD, 16);
+    private Font font = new Font(null, Font.BOLD, 16);
     private int UserColor1=0,Userhp1=10,Userspeed1=7;
     private int UserColor2=0,Userhp2=10,Userspeed2=7;
     private int Page=0,count1=5,count2=5;
@@ -40,6 +40,9 @@ public class Open extends JFrame {
             speed=false,
             chooseUser=false;
     private int UP_DOWN=0,Left_RIGHT=0;
+    private JLabel mo=new JLabel("玩家        攻擊         移動方式");
+    private JLabel p1=new JLabel("p1            H           W    A        S       D");
+    private JLabel p2=new JLabel("p2            L           Up   Left     Right   Down");
 
     public Open() {
         init();
@@ -55,6 +58,7 @@ public class Open extends JFrame {
 
         layeredPane.add(Page1, JLayeredPane.MODAL_LAYER);
         layeredPane.add(Page2, JLayeredPane.MODAL_LAYER);
+        layeredPane.add(Page3, JLayeredPane.MODAL_LAYER);
 
         Page1.setBounds(0, 0, frW, frH);
         Page1.setVisible(true);
@@ -68,25 +72,25 @@ public class Open extends JFrame {
         Page2.setBounds(0, 0, frW, frH);
         Page2.setVisible(false);
         Page2.setLayout(null);
-        Page3.setBounds(150, 100, 250, 150);
+        Page3.setBounds(0, 0, frW, frH);
         Page3.setVisible(false);
         Page3.setLayout(null);
 
         title.setOpaque(false);
         title.setBounds(260, 50, 310, 100);
-        title.setFont(new Font("JackeyFont", Font.BOLD, 50));
+        title.setFont(new Font("null", Font.BOLD, 50));
 
-        jLabel_Start.setBounds(300, 200, 200, 60);
+        jLabel_Start.setBounds(350, 200, 200, 60);
         jLabel_Start.setOpaque(true);
         jLabel_Start.setFont(font);
-        jLabel_Description.setBounds(300, 250, 200, 60);
+        jLabel_Description.setBounds(350, 250, 200, 60);
         jLabel_Description.setOpaque(true);
         jLabel_Description.setFont(font);
-        jLabel_Exit.setBounds(300, 300, 200, 60);
+        jLabel_Exit.setBounds(350, 300, 200, 60);
         jLabel_Exit.setOpaque(true);
         jLabel_Exit.setFont(font);
 
-        jLabel_Arrow1.setBounds(180,200,70,50);
+        jLabel_Arrow1.setBounds(280,200,70,50);
         jLabel_Arrow2.setBounds(5,200,70,50);
         jLabel_Arrow3.setBounds(70,150,30,50);
         jLabel_Arrow3.setVisible(false);
@@ -105,7 +109,12 @@ public class Open extends JFrame {
         jLabel_Count2.setBounds(415,430,150,50);
         jLabel_Count2.setFont(font);
 
-
+        mo.setBounds(300,100,500,50);
+        mo.setFont(font);
+        p1.setBounds(300,200,500,50);
+        p1.setFont(font);
+        p2.setBounds(300,300,500,50);
+        p2.setFont(font);
 
 //      --------------------------------------------------------------
         drowpanel.setVisible(true);
@@ -121,6 +130,11 @@ public class Open extends JFrame {
         Page2.add(jLabel_Arrow2 ,JLayeredPane.DEFAULT_LAYER );
         Page2.add(jLabel_Arrow3 ,JLayeredPane.DEFAULT_LAYER );
         Page2.add(drowpanel,JLayeredPane.MODAL_LAYER);
+
+//      ---------------------------------------------------------------
+        Page3.add(mo);
+        Page3.add(p1);
+        Page3.add(p2);
 
 
         this.addKeyListener(new KeyAdapter() {
@@ -315,6 +329,10 @@ public class Open extends JFrame {
                                     UP_DOWN=0;
                                     break;
                                 case 1:
+                                    Page1.setVisible(false);
+                                    Page3.setVisible(true);
+                                    Page=4;
+
                                     break;
                                 case 2:
                                     System.exit(0);
@@ -341,7 +359,12 @@ public class Open extends JFrame {
                     }
                         break;
                     case KeyEvent.VK_ESCAPE:
-                        if(Page==1){
+                        if(Page==4){
+                            Page1.setVisible(true);
+                            Page3.setVisible(false);
+                            Page=0;
+                        }
+                        else if(Page==1){
                             if(color){
                                 if(!(chooseUser)){
                                     UserColor1=Left_RIGHT;
@@ -395,7 +418,7 @@ public class Open extends JFrame {
                 y=310;
                 break;
         }
-        jLabel_Arrow1.setLocation(180,y);
+        jLabel_Arrow1.setLocation(280,y);
     }
     public void arrow2(){
         int x=0;
